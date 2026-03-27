@@ -1,5 +1,3 @@
-# globalpartners-analytics
-
 # GlobalPartners Order Analytics — End-to-End AWS Data Pipeline
 
 > [Watch Project Walkthrough](https://youtu.be/_09hr0gpkBY)
