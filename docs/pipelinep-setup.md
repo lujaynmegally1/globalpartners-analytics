@@ -232,7 +232,7 @@ Task settings JSON:
 6. Script path: `s3://globalpartners-glue-assets/scripts/glue-job-1.py`
 7. Number of workers: 2 (G.1X)
 
-Upload `scripts/glue-job-1.py` to `s3://globalpartners-glue-assets/scripts/` before running.
+Upload [scripts/glue-job-1.py](../scripts/glue-job-1.py) to `s3://globalpartners-glue-assets/scripts/` before running.
 
 ### 6.2 Create Glue Job 2
 
@@ -240,6 +240,8 @@ Same configuration as above:
 
 - Name: `globalpartners-gluejob-2-gold`
 - Script path: `s3://globalpartners-glue-assets/scripts/glue-job-2.py`
+
+Upload [scripts/glue-job-2.py](../scripts/glue-job-2.py) to `s3://globalpartners-glue-assets/scripts/` before running.
 
 ### 6.3 Create Glue Crawler
 
@@ -460,13 +462,13 @@ In both repos (`global-partners-dashboard` and `global-partners-etl`), go to Set
 
 ### 12.2 Glue CI/CD Workflow
 
-File: `.github/workflows/deploy-glue.yml` in `global-partners-etl`
+File: [Glue ETL workflow yml document](../cicd/deploy-glue.yml )
 
 Triggers on push to `main` when files in `scripts/**` change. Syncs scripts to S3 and runs `aws glue update-job` for both jobs.
 
 ### 12.3 Dashboard CI/CD Workflow
 
-File: `.github/workflows/deploy.yml` in `global-partners-dashboard`
+File: [ECS Dashboard workflow yml document](../cicd/deploy-ecs.yml)
 
 Triggers on push to `main`. Builds Docker image, pushes to ECR, updates ECS task definition, waits for service stability.
 
