@@ -137,6 +137,7 @@ Chose **Option B** to keep Silver as a detailed, reusable dataset. Revenue aggre
 
 **Result:** Glue Job 1 ran successfully in ~5 minutes. Silver `sales_fact` partitioned by `order_date`.
 
+> → [View Glue Job 1 Code](../scripts/glue-job-1.py)
 ---
 
 ## Phase 6 — Glue Job 2 (Silver → Gold)
@@ -157,6 +158,7 @@ A customer can be "High CLV" but "Churn Risk" — meaning they were historically
 
 **Result:** Glue Job 2 ran successfully in ~9 minutes.
 
+> → [View Glue Job 2 Code](../scripts/glue-job-2.py)
 ---
 
 ## Phase 7 — Discount Effectiveness Roadblock
