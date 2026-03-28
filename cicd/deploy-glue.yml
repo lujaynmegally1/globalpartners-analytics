@@ -1,0 +1,35 @@
+name: Deploy Glue Jobs
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'scripts/**' ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # 1. Sync the local scripts folder to S3
+      - name: Sync scripts to S3
+        run: |
+          aws s3 sync ./scripts s3://globalpartners-glue-assets/scripts/
+
+# 2. Update Job 1
+      - name: Update Glue Job 1
+        run: |
+          aws glue update-job --job-name "globalpartners-gluejob-1" --job-update \
+          "Role=globalpartners-gluejob-role,GlueVersion=4.0,WorkerType=G.1X,NumberOfWorkers=2,Command={Name=glueetl,ScriptLocation=s3://globalpartners-glue-assets/scripts/glue-job-1.py,PythonVersion=3}"
+
+      # 3. Update Job 2
+      - name: Update Glue Job 2
+        run: |
+          aws glue update-job --job-name "globalpartners-gluejob-2-gold" --job-update \
+          "Role=globalpartners-gluejob-role,GlueVersion=4.0,WorkerType=G.1X,NumberOfWorkers=2,Command={Name=glueetl,ScriptLocation=s3://globalpartners-glue-assets/scripts/glue-job-2.py,PythonVersion=3}"
