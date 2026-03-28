@@ -103,7 +103,9 @@ Manually trigger or let EventBridge + Step Functions handle orchestration:
 EventBridge (daily 7AM) → DMS Task → Step Functions → Glue Job 1 → Glue Job 2 → Glue Crawler → Athena
 ```
 
-### 6. Run the Streamlit dashboard locally
+### 6. Build and Run the Streamlit dashboard locally
+
+[Build using these docs](../streamlit-dashboard-app/) 
 
 ```bash
 pip install -r requirements.txt
