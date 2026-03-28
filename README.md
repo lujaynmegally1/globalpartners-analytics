@@ -153,7 +153,6 @@ AWS_SECRET_ACCESS_KEY
 ## Docs
 
 - [Architecture & Design Rationale](docs/architecture.md)
-- [System Design Decisions](docs/system-design.md)
 - [Data Model](docs/data-model.md)
 - [Project Log](docs/project-log.md)
 - [Pipeline Setup Guide](docs/pipeline-setup.md)
