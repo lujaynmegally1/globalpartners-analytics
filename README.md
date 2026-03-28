@@ -145,8 +145,8 @@ AWS_SECRET_ACCESS_KEY
 
 | Repo | Purpose |
 |---|---|
-| [`global-partners-etl`](https://github.com/YOUR_USERNAME/global-partners-etl) | PySpark Glue Job scripts + ETL CI/CD workflow |
-| [`global-partners-dashboard`](https://github.com/YOUR_USERNAME/global-partners-dashboard) | Streamlit app + Dockerfile + ECS CI/CD workflow |
+| [`global-partners-etl`](https://github.com/lujaynmegally1/global-partners-etl) | PySpark Glue Job scripts + ETL CI/CD workflow |
+| [`global-partners-dashboard`](https://github.com/lujaynmegally1/global-partners-dashboard) | Streamlit app + Dockerfile + ECS CI/CD workflow |
 
 ---
 
