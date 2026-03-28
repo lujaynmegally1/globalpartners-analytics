@@ -274,6 +274,8 @@ SELECT * FROM globalpartners_gold_db.discount_effectiveness;
 
 ## Step 8 — Streamlit Dashboard (Local)
 
+[Build using these docs](../streamlit-dashboard-app/)
+
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
