@@ -12,6 +12,8 @@ A detailed chronological record of how this project was built — including ever
 
 Downloaded the three source CSV files and manually explored them before writing any code.
 
+[See code and results here](../data_explore.ipynb) 
+
 **Findings:**
 
 | File | Records | Issues Found |
