@@ -270,6 +270,8 @@ GitHub Actions workflow triggers on push to `main`:
 5. Render new ECS task definition with updated image
 6. Deploy to ECS service and wait for stability
 
+[View workflow yml document](../cicd/deploy-ecs.yml)
+
 **Tested:** Made a UI change, pushed to GitHub, confirmed the change appeared at the ALB URL ~15 minutes later. ✅
 
 ### Glue CI/CD (`global-partners-etl` repo)
@@ -278,6 +280,8 @@ GitHub Actions workflow triggers on push to `main` when files in `scripts/**` ch
 1. Configure AWS credentials
 2. Sync `./scripts/` folder to `s3://globalpartners-glue-assets/scripts/`
 3. Run `aws glue update-job` for Job 1 and Job 2 with new S3 script location
+   
+[View workflow yml document](../cicd/deploy-glue.yml )
 
 **Tested:** Added a comment to `glue-job-1.py`, pushed to GitHub, confirmed the updated script path appeared in the Glue console Job Details tab. ✅
 
