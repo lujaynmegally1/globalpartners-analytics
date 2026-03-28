@@ -4,8 +4,7 @@
 
 ---
 
-## 📌 Table of Contents
-* [Component Breakdown & Design Rationale](#component-breakdown--design-rationale)
+##  Table of Contents
 * [Data Ingestion (DMS)](#data-ingestion)
 * [Load & Transform (S3 & Glue)](#load--transform)
 * [Orchestration (Step Functions)](#orchestration)
