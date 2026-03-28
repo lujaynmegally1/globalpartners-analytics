@@ -1,4 +1,5 @@
 # End-to-End GlobalPartners Order Analytics Pipeline Architecture
+> ![Architecture Diagram](docs/architecture-diagram.png) 
 ---
 # Component Breakdown & Design Rationale
 
