@@ -310,6 +310,17 @@ Each state has a `Catch` block routing failures to a `Pipeline Failed` terminal 
 
 ---
 
+### Post-Build — SME Feedback & Architecture Review
+
+After project completion, the architecture was reviewed and the following feedback was received:
+Orchestration — Step Functions replaced by Glue Workflows (recommended)
+The use of Step Functions was identified as a mismatch for this pipeline's scope. Because every orchestrated component is a Glue resource — Glue Job 1, Glue Job 2, and the Glue Crawler — AWS Glue Workflows is the correct tool. It is purpose-built for Glue-only pipelines and handles job-to-job and job-to-crawler dependencies natively, without the overhead of a cross-service state machine.
+Step Functions is the right choice when a workflow spans multiple different AWS services simultaneously (e.g., a Lambda trigger feeding into ECS which then calls a Glue job). For a Glue-only pipeline, it introduces unnecessary complexity.
+Recommended upgrade path — Apache Airflow (MWAA)
+At larger scale, Apache Airflow via Amazon MWAA becomes the preferred orchestration layer. Key advantages over both Step Functions and Glue Workflows include task-level retry logic with configurable backoff, SLA alerting, a visual DAG interface for team-level visibility, and a broad operator ecosystem for integrating with systems beyond AWS.
+Re-implementation of orchestration was not done due to time constraints. The architecture diagram has been updated to reflect Glue Workflows as the current-phase recommendation and Airflow as the scale path, and other documentation has been updated as well. 
+
+
 ## Summary of Key Decisions & Pivots
 
 | Decision | Why |
