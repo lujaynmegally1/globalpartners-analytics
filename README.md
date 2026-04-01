@@ -9,9 +9,7 @@ Built entirely on AWS using PySpark, AWS Glue, S3, Athena, Step Functions, and G
 ---
 ## Architecture 
 > ![Architecture Diagram](docs/architecture2.png)
-Orchestration was originally implemented using AWS Step Functions. Following SME review, AWS Glue Workflows is identified as the more appropriate tool for this pipeline's scope, as all orchestrated components are Glue-native (Job 1 → Job 2 → Crawler). Apache Airflow (MWAA) is noted as the recommended upgrade path at production scale. See the Orchestration section below for full rationale.
-> 
-> *(See [`docs/architecture.md`](docs/architecture.md) for the full component breakdown and design rationale)*
+Orchestration was originally implemented using AWS Step Functions. Following SME review, AWS Glue Workflows is identified as the more appropriate tool for this pipeline's scope, as all orchestrated components are Glue-native (Job 1 → Job 2 → Crawler). Apache Airflow (MWAA) is noted as the recommended upgrade path at production scale. See the Orchestration section in [`docs/architecture.md`](docs/architecture.md) for full rationale  
 
 ---
 
