@@ -7,9 +7,10 @@ An end-to-end data engineering pipeline that ingests multi-location restaurant o
 Built entirely on AWS using PySpark, AWS Glue, S3, Athena, Step Functions, and GitHub Actions CI/CD.
 
 ---
+## Architecture (after feedback from SMEs)
+> ![Architecture Diagram](docs/architecture2.png)
 
-## Architecture
-
+## Architecture (project docs currently reflect this architecture)
 > ![Architecture Diagram](docs/architecture.png)
 > *(See [`docs/architecture.md`](docs/architecture.md) for the full component breakdown and design rationale)*
 
