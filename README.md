@@ -7,11 +7,10 @@ An end-to-end data engineering pipeline that ingests multi-location restaurant o
 Built entirely on AWS using PySpark, AWS Glue, S3, Athena, Step Functions, and GitHub Actions CI/CD.
 
 ---
-## Architecture (after feedback from SMEs)
+## Architecture 
 > ![Architecture Diagram](docs/architecture2.png)
-
-## Architecture (project docs currently reflect this architecture)
-> ![Architecture Diagram](docs/architecture.png)
+Orchestration was originally implemented using AWS Step Functions. Following SME review, AWS Glue Workflows is identified as the more appropriate tool for this pipeline's scope, as all orchestrated components are Glue-native (Job 1 → Job 2 → Crawler). Apache Airflow (MWAA) is noted as the recommended upgrade path at production scale. See the Orchestration section below for full rationale.
+> 
 > *(See [`docs/architecture.md`](docs/architecture.md) for the full component breakdown and design rationale)*
 
 ---
@@ -24,7 +23,7 @@ Built entirely on AWS using PySpark, AWS Glue, S3, Athena, Step Functions, and G
 | Ingestion | AWS Database Migration Service (DMS) |
 | Storage | AWS S3 (Bronze / Silver / Gold) |
 | Transformation | AWS Glue (PySpark) |
-| Orchestration | AWS Step Functions + Amazon EventBridge |
+| Orchestration | Glue Workflow (Note: Amazon EventBridge was actually used in implementation to trigger DMS full load (limitation with database) and  AWS Step Functions was used during implementation before project revision) |
 | Query Layer | AWS Athena + Glue Crawler & Catalog |
 | Serving | Streamlit on AWS ECS Fargate (via ALB) |
 | Secrets & Encryption | AWS KMS (SSE-KMS) |
