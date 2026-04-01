@@ -4,7 +4,10 @@
 
 This guide walks through the full setup of the GlobalPartners AWS data pipeline from scratch — every resource, configuration, and credential needed to reproduce the environment.
 
+⚠️ Orchestration Note: This setup guide documents the implementation using AWS Step Functions for orchestration. Following SME review, AWS Glue Workflows is the recommended orchestration tool for this pipeline's scope (all steps are Glue-native), and Apache Airflow (MWAA) is the recommended path at production scale. Step Functions remains functional but is noted here as a learning point. See [`docs/architecture.md`](docs/architecture.md) for full rationale.
+
 ---
+
 
 ## Prerequisites
 
