@@ -10,7 +10,7 @@ Built entirely on AWS using PySpark, AWS Glue, S3, Athena, Step Functions, and G
 
 ## Architecture
 
-> ![Architecture Diagram](docs/architecture-diagram.png)
+> ![Architecture Diagram](docs/architecture.png)
 > *(See [`docs/architecture.md`](docs/architecture.md) for the full component breakdown and design rationale)*
 
 ---
