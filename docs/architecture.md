@@ -1,6 +1,8 @@
 # End-to-End GlobalPartners Order Analytics Pipeline Architecture
 
-![Architecture Diagram](architecture-diagram.png)
+## Architecture
+> ![Architecture Diagram](architecture2.png)
+Orchestration was originally implemented using AWS Step Functions. Following SME review, AWS Glue Workflows is identified as the more appropriate tool for this pipeline's scope, as all orchestrated components are Glue-native (Job 1 → Job 2 → Crawler). Apache Airflow (MWAA) is noted as the recommended upgrade path at production scale. See the Orchestration section below for full rationale.
 
 ---
 
@@ -127,17 +129,12 @@ Stores curated, analytics-ready datasets.
 
 ##  Orchestration
 
-### Amazon EventBridge
-* Schedules daily pipeline execution via serverless cron.
-* Triggers DMS tasks.
+* This pipeline was initially built using AWS Step Functions for orchestration. Following SME review, it was identified that AWS Glue Workflows is the more appropriate choice for this architecture, and Apache Airflow (via Amazon MWAA) is the recommended upgrade path at larger scale.
+* Why Glue Workflows over Step Functions here: Since every step in this pipeline is a Glue resource — two Glue jobs and a Glue Crawler — Glue Workflows is the natural fit. It is purpose-built for orchestrating Glue-only pipelines, offers native dependency management between jobs and crawlers, and keeps the tooling consolidated within a single service. Step Functions adds unnecessary complexity when no cross-service orchestration is needed.
+* Why Apache Airflow at larger scale: As pipeline complexity grows — more data sources, branching logic, cross-system dependencies, or team-level DAG management — Apache Airflow (via Amazon MWAA) becomes the stronger choice. Airflow provides richer error handling, task-level retries with configurable backoff, full DAG visibility, SLA alerting, and a broader ecosystem of operators for integrating with services beyond AWS. It is the industry standard for production-grade data orchestration at scale.
 
-### AWS Step Functions
-Orchestrates the end-to-end state machine.
-
-**Why Step Functions?**
-* State tracking and built-in retries.
-* Visual execution graph for debugging.
-* **DLQ (Dead Letter Queue)** integration.
+Note: The current implementation uses Step Functions, which was built before this architectural review. Glue Workflows is documented here as the correct implementation for this pipeline's scope, with Airflow noted as the production upgrade path. Re-implementation was not done. 
+During the implementation of this project, Amazon EventBridge schedules daily pipeline execution via serverless cron and triggers DMS task (full load due to database limitation). AWS Step Functions was used to orchestrate the end-to-end state machine.
 
 **Workflow:**
 1. Ingestion validation (DMS → S3 Bronze).
